@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EYA — LittleSoul Journal 💠</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Dark Romance Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Audio Element for SongBg.mp3 -->
+  <audio id="bgAudio" src="SongBg.mp3" loop></audio>
+
+  <!-- Ambient Glowing Background -->
+  <div class="ambient-glow">
+    <div class="glow-orb crimson-orb"></div>
+    <div class="glow-orb midnight-orb"></div>
+    <div class="glow-orb obsidian-orb"></div>
+  </div>
+
+  <!-- Falling Rose Petals Container -->
+  <div id="petals-container"></div>
+
+  <!-- App Header Controls -->
+  <header class="app-header">
+    <div class="logo-badge">
+      <span class="symbol">🌹</span> EYA'S LITTLE SOUL JOURNAL <span class="symbol">🎸</span>
+    </div>
+
+    <div class="header-right">
+      <button id="musicToggle" class="gothic-btn music-btn">
+        <span class="music-icon">🎵</span> <span id="musicText">Play Music</span>
+      </button>
+      <div class="page-counter" id="pageCounter">1 / 10</div>
+    </div>
+  </header>
+
+  <!-- Main Scrapbook Journal Shell -->
+  <main class="journal-wrapper">
+    <!-- Left Leather/Metal Binding Clips -->
+    <div class="journal-binding">
+      <div class="spine-hinge"></div>
+      <div class="spine-hinge"></div>
+      <div class="spine-hinge"></div>
+      <div class="spine-hinge"></div>
+    </div>
+
+    <div class="journal-viewport" id="viewport">
+
+      <!-- ================= PAGE 1: WELCOME ================= -->
+      <section class="page active" id="page-1">
+        <div class="page-content">
+          <div class="wax-seal">🌹</div>
+          <div class="grid-layout welcome-grid">
+            
+            <div class="polaroid-wrapper float-animation">
+              <div class="lace-tape top-tape"></div>
+              <div class="polaroid-frame crimson-glow">
+                <img src="welcomeimage.jpg" alt="EYA Avatar">
+                <p class="caption-text">Welcome to LittleSoul... 🖤</p>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="banner-title dark-crimson-bg">
+                <h1>EYA'S LITTLE SOUL JOURNAL 🌹</h1>
+              </div>
+
+              <div class="gothic-note parchment-note rotate-right">
+                <span class="pin">📌</span>
+                <p><b>Alias:</b> EYA / LittleSoul</p>
+                <p><b>Quote:</b> "In the middle of the night, ideas take form."</p>
+                <p><b>Status:</b> Building empires in silence.</p>
+              </div>
+
+              <div class="card-box navy-box">
+                <p>Enter a digital scrapbook crafted with code, manga stories, late-night setups, and dark romance aesthetics.</p>
+              </div>
+
+              <button class="gothic-btn crimson-glow-btn next-trigger">Step Inside 🎸</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 2: GAMING LIFE ================= -->
+      <section class="page scrollable-page" id="page-2">
+        <div class="page-content">
+          <div class="banner-title midnight-bg">
+            <h2>🕸 GAMES I LOVE</h2>
+          </div>
+
+          <div class="grid-layout">
+            <div class="polaroid-wrapper">
+              <div class="lace-tape top-tape"></div>
+              <div class="polaroid-frame crimson-glow">
+                <img src="laptopimage.jpg" alt="Gaming Setup">
+                <p class="caption-text">Poppy & Beyond 🕷</p>
+              </div>
+            </div>
+
+            <div class="gothic-note custom-bg-box rotate-left">
+              <h3 class="gothic-subtitle">Favorite Games & Stats</h3>
+              <ul class="fact-list">
+                <li>🖤 <b>Primary Realm:</b> Poppy Playtime & Rocket League</li>
+                <li>✨ <b>Favorite Characters:</b> Prototype, Kaiser, Catnap, Itoshi Sae</li>
+                <li>🍁 <b>Roblox games:</b> Blox Fruit / Azure Latch / Evade</li>
+                <li>🪐 <b>Current Quest:</b> To be the best silent unknown Player</li>
+              </ul>
+              
+              <div class="stat-bar-container">
+                <span class="stat-label">Mastered Games</span>
+                <div class="stat-bar"><div class="stat-fill crimson-fill" style="width: 87%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 3: MY PROJECTS ================= -->
+      <section class="page scrollable-page" id="page-3">
+        <div class="page-content">
+          <div class="banner-title dark-crimson-bg">
+            <h2>⏱ What Things I'm Doing?</h2>
+          </div>
+
+          <div class="sticky-grid">
+            <div class="gothic-note navy-note rotate-left card-hover">
+              <span class="status-tag completed">Completing</span>
+              <h3>⚽ Reading Blue Lock Manga</h3>
+              <p>Still reading more expoides about Blue lock bec its kinda my fav mangas and I love Books abt blue lock.</p>
+            </div>
+
+            <div class="gothic-note crimson-note rotate-right card-hover">
+              <span class="status-tag active-tag">In Progress</span>
+              <h3>🌙 Moonlight Star</h3>
+              <p>Trying to create the best Gothic-themed Discord server & bot infrastructure.</p>
+            </div>
+
+            <div class="gothic-note parchment-note rotate-left card-hover">
+              <span class="status-tag completed"> Not Completed</span>
+              <h3> Learning Turkish </h3>
+              <p>Trying to learn turkish bec I love Turkey and its beauty and i wish that i can work there as a doctor or anything and i wish i can even live there instead.</p>
+            </div>
+
+            <div class="gothic-note obsidian-note rotate-right card-hover">
+              <span class="status-tag upcoming"> Coming Soon </span>
+              <h3>🎸 Create Notes  </h3>
+              <p>I would love to create a note abt every person i love and keep it on my fav note forever .</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 4: BIRTHDAYS ================= -->
+      <section class="page" id="page-4">
+        <div class="page-content">
+          <div class="banner-title midnight-bg">
+            <h2>🎂 WHAT I LOVE IN BIRTHDAYS</h2>
+          </div>
+
+          <div class="grid-layout">
+            <div class="polaroid-wrapper float-animation">
+              <div class="polaroid-frame midnight-glow">
+                <img src="birthday.jpg" alt="Birthday Vibes">
+                <p class="caption-text">Special Days Made by Special People 🌹</p>
+              </div>
+            </div>
+
+            <div class="card-box dark-crimson-bg">
+              <h3 class="gothic-subtitle">Birthday Favorites</h3>
+              <ul class="fact-list">
+                <li>🖤 <b>Special friends</b> I love when my special friends are around me more than giving me a present</li>
+                <li>🍰 <b>Favorite Cake:</b> Chocolate / Vanilla</li>
+                <li>🎁 <b>Best Part:</b> Is when i see or text my special friends more than celebrating it</li>
+                <li>🌙 <b>Midnight Wishes:</b> To always see my special friends smile bec its what it makes my day more than i smile bec their smile is the prettiest thing ever i can see by my eyes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 5: ALL ABOUT ETK ================= -->
+      <section class="page scrollable-page" id="page-5">
+        <div class="page-content">
+          <div class="banner-title dark-crimson-bg">
+            <h2> 🐞 Facts about me </h2>
+          </div>
+
+          <div class="sticky-grid">
+            <div class="gothic-note parchment-note rotate-left">
+              <h3>🖤 Personal Traits</h3>
+              <ul class="fact-list">
+                <li><b>Aesthetic:</b> Dark Romance & Navy Blue & Dark Red</li>
+                <li><b>Vibe:</b> Quiet, Night Owl , Loves music at night , loves night with special friends</li>
+                <li><b>Personality:</b> Different between arabic and English , Can't Decide it </li>
+                <li><b>Peak Hours:</b> 1:00 AM to 5:00 AM</li>
+              </ul>
+            </div>
+
+            <div class="gothic-note crimson-note rotate-right">
+              <h3>🎧 Media & Tastes</h3>
+              <ul class="fact-list">
+                <li><b>Music:</b> Jumpstyle songs , Dark romance songs , Normal songs</li>
+                <li><b>Anime:</b> Blue Lock & Death note</li>
+                <li><b>Reads:</b> Manga </li>
+              </ul>
+            </div>
+
+            <div class="gothic-note navy-note rotate-left">
+              <h3>💐 Favorites</h3>
+              <ul class="fact-list">
+                <li><b>Drink:</b> Monster , Strawberry , Ice coffee</li>
+                <li><b>Season:</b> Winter</li>
+                <li><b>Country:</b> Japan , Turkey</li>
+                <li><b>Anime:</b> Blue Lock </li>
+                <li><b>Animals:</b> Cats , LadyBug </li>
+                <li><b>Subject:</b> English , Math</li>
+                <li><b>Game:</b> Poppy Playtime , Rocket league </li>
+                <li><b>App:</b> Instagram </li>
+                <li><b>Singer:</b> Chirs Grey</li>
+                <li><b>Weather:</b> Calm Cold rainy weather</li>
+                <li><b>Flower:</b> 🌺 </li>
+                <li><b>Store:</b> More Shopping Store</li>
+                <li><b>Word:</b> Awh , Ehe</li>
+                <li><b>Nickname:</b> EYA , Eyadough , Yori </li>
+                
+                <li><b>Sweets:</b> Kinder , Biscream , Mixed Ice cream , and any chocolate </li>
+                <li><b>Food:</b> Kerib , Shawarama , </li>
+                <li><b>Colors:</b> Navy Blue & Dark Red</li>
+              </ul>
+            </div>
+
+            <div class="gothic-note obsidian-note rotate-right">
+              <h3> 🕸 Unbelievable Facts</h3>
+              <ul class="fact-list">
+                <li>• I love When my special friend is with me or come to me instead of giving me present in my birthday and love it small bec they are present themselves</li>
+                <li>• If i have a bad day , and my special friends text me or meet me in real life and i see their smile it accutally makes me so happy than you all imagine and changes my mood so fast</li>
+                <li>• I don't forget Anything u tell me But I took too long to remember it bec im a slow thinker or like i remember slowly even if i know already</li>
+                <li>• Wished to learn cooking because i love cooking so much than u think but i just wished to know how and need someone to teach me because im shy to ask my mom</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 6: PASSIONS & LIKES ================= -->
+      <section class="page scrollable-page" id="page-6">
+        <div class="page-content">
+          <div class="banner-title midnight-bg">
+            <h2>🖤 PASSIONS & LIKES</h2>
+          </div>
+
+          <div class="sticky-grid">
+            <div class="gothic-note parchment-note rotate-left">
+              <h3>🎵 Fav Artists</h3>
+              <p>Chirs grey , 6arelyhuman , CG5  </p>
+            </div>
+
+            <div class="gothic-note crimson-note rotate-right">
+              <h3>🎧 Fav Musics </h3>
+              <p> I can't let u go , Paparazzi , Poker face , Sleep well , Enemies , Senpai Remix , Bare minimum , the castle , BrooklynBloodPoP! , Wutiwant , faster n harder , Smoke it off , L'ectoile d'afrique , Love potions </p>
+            </div>
+
+            <div class="gothic-note navy-note rotate-left">
+              <h3>Talents (sports) </h3>
+              <p> Learned Karate earned black , Swimming , Football .</p>
+            </div>
+
+            <div class="gothic-note obsidian-note rotate-right">
+              <h3>🎮 Kind of games i love</h3>
+              <p>I love story games as genshin , Love big world games as ananta , and cozy games that is with firends , Teamwork PS5 games , Simulator cozy games .</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 7: WHAT I HATE ================= -->
+      <!-- ================= PAGE 7: WHAT I HATE ================= -->
+      <section class="page scrollable-page" id="page-7">
+        <div class="page-content">
+          <div class="banner-title dark-crimson-bg">
+            <h2>🚫 WHAT I HATE / SCARED OF</h2>
+          </div>
+
+          <div class="sticky-grid">
+            <div class="gothic-note obsidian-note rotate-left">
+              <h3>🍂 Scared of </h3>
+              <ul class="fact-list">
+                <li> 🕸 Scared of losing my special friends </li>
+                <li> 🕸 Scared to make my special fav friends feels that i dont love them or like im scared to understand me wrong </li>
+                <li> 🕸 Scared to make something that make them see me fake friend by an accident and scared of Doing smth that they may think im fake person </li>
+                <li> 🕸 Scared To make my special friends see me lying while im saying the truth even if they see a proof by their eyes but i really didn't mean anything bad im just scared to make any fav person that i stopped love them , i acc love them so much </li>
+              </ul>
+            </div>
+
+             <div class="sticky-grid">
+            <div class="gothic-note obsidian-note rotate-left">
+              <h3> 😑 Other Things </h3>
+              <ul class="fact-list">
+                <li> 🕸 Hates when someone control me in a bad why , but i love when a special friend control me alot and so much bec i love it soooo much </li>
+                <li> 🕸 Hates when someone keeps Doing the same stuff i said that i hate it  </li>
+                <li> 🕸 Hate When someone asks me to give them my phone (Normal friends) , but if they were my special friends i would give them without thinking , but who ever takes my phone to check on it , it means they dont trust me at all so i hate that so much even if there nothing in my phone  </li>
+              </ul>
+            </div>
+
+            
+
+            <div class="gothic-note crimson-note rotate-right">
+              <h3>🚫 Hates </h3>
+              <ul class="fact-list">
+                <li>❌ Hates when there is a very hot day</li>
+                <li>❌Hates when a friend keeps talking abt girls in a bad way and even if they are talking abt girls normaly and ask me questions abt it and tells me im lying and thinks that i love relationships ,I Really hates it so muc than u can imagine</li>
+                <li>❌ Hates when a friend thinks im a lover boy , bec They always think im dumb when i talk to a girl or something , like they understand me that im saying love words as relationships..</li>
+                <li>❌ Hates When Someone Thinks I'm Still a child and says "you still dont know these stuff , you will know it when you grow up" </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 8: DREAM GALLERY ================= -->
+      <section class="page scrollable-page" id="page-8">
+        <div class="page-content">
+          <div class="banner-title midnight-bg">
+            <h2>💭 DREAM GALLERY (THINGS I LOVE)</h2>
+          </div>
+
+          <div class="dream-gallery-grid">
+            <div class="polaroid-wrapper rotate-left">
+              <div class="polaroid-frame crimson-glow mini-frame">
+                <img src="castle.jpg" alt="Dream 1">
+                <p class="caption-text">Dream Place 🏰</p>
+              </div>
+            </div>
+
+            <div class="polaroid-wrapper rotate-right">
+              <div class="polaroid-frame midnight-glow mini-frame">
+                <img src="kaiser.jpg" alt="Dream 2">
+                <p class="caption-text">Dream collection</p>
+              </div>
+            </div>
+
+            <div class="polaroid-wrapper rotate-left">
+              <div class="polaroid-frame crimson-glow mini-frame">
+                <img src="monsterxphone.jpg" alt="Dream 3">
+                <p class="caption-text">MonsterHolic 🧃</p>
+              </div>
+            </div>
+
+            <div class="polaroid-wrapper rotate-right">
+              <div class="polaroid-frame midnight-glow mini-frame">
+                <img src="dreamsbookslibrary.jpg" alt="Dream 4">
+                <p class="caption-text">Dream Library</p>
+              </div>
+            </div>
+
+             <div class="polaroid-wrapper rotate-right">
+              <div class="polaroid-frame midnight-glow mini-frame">
+                <img src="Dream.jpg.jpg" alt="Dream 4">
+                <p class="caption-text">Dream small accessory</p>
+              </div>
+            </div>
+
+            <div class="polaroid-wrapper rotate-left">
+              <div class="polaroid-frame crimson-glow mini-frame">
+                <img src="acc.jpg" alt="Dream 5">
+                <p class="caption-text">Favourite Accessories</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 9: RANDOM FACTS ================= -->
+      <section class="page scrollable-page" id="page-9">
+        <div class="page-content">
+          <div class="banner-title dark-crimson-bg">
+            <h2>💭 QUICK SHADOW FACTS</h2>
+          </div>
+
+          <div class="sticky-grid">
+            <div class="gothic-note parchment-note rotate-left">🎞 <b>Fav Hobby:</b> Edits </div>
+            <div class="gothic-note navy-note rotate-right">⚽ <b>Favorite BL Character :</b> Kaiser , Sae</div>
+            <div class="gothic-note crimson-note rotate-left">🎮 <b>Main Game:</b> Roblox (Blox fruit , Blue lock rivals , Azure latch) </div>
+            <div class="gothic-note parchment-note rotate-right">🧩 <b>Fun Fact:</b> More energetic at night and Can study better at night or do anything </div>
+            <div class="gothic-note obsidian-note rotate-left">🌙 <b>Night Owl Level:</b> 100/100</div>
+            <div class="gothic-note navy-note rotate-right">🎧 <b>Audio:</b> Calming Music at night while studying or writing about my favourite people </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 10: FUTURE VISION ================= -->
+      <section class="page scrollable-page" id="page-10">
+        <div class="page-content">
+          <div class="banner-title midnight-bg">
+            <h2>🚀 FUTURE EYA </h2>
+          </div>
+
+          <div class="card-box dark-crimson-bg">
+            <h3 class="gothic-subtitle">The Master Plan</h3>
+            <ul class="fact-list">
+              <li> 📖 To master my skills in learning another languge as turkish and japanese .</li>
+              <li> 🖥 To make a cool setup in my room and organize my life and everything.</li>
+              <li>🌙 To work hard and work as a job and Thank my dad for all he gives me by Getting Him presents he dreamed off as he made my life .</li>
+              <li>🏆 To Be the next best football player </li>
+              <li>⚡ To Travel to the country i wanted to visit and live there or work there and meet my favourite friends</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <footer class="nav-controls">
+      <button id="prevBtn" class="gothic-btn">❮ Prev</button>
+      <div class="dots-indicator" id="dotsContainer"></div>
+      <button id="nextBtn" class="gothic-btn crimson-btn">Next ❯</button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
