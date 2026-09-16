@@ -24,7 +24,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.65;
   letter-spacing: 0.3px;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +117,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding: 0 10px;
+  padding: 0 5px;
   flex-shrink: 0;
 }
 
@@ -124,55 +125,59 @@ body {
   color: var(--text-light);
   font-family: 'Cinzel Decorative', serif;
   font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
   background: rgba(11, 19, 37, 0.85);
-  padding: 8px 18px;
+  padding: 6px 14px;
   border-radius: 20px;
   border: 1px solid rgba(197, 160, 89, 0.4);
   box-shadow: 0 0 15px rgba(0,0,0,0.8);
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .page-counter {
   color: var(--text-light);
   background: rgba(96, 0, 24, 0.85);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 15px;
   font-family: 'Cinzel', serif;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   border: 1px solid rgba(255,255,255,0.15);
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 /* --- MAIN SCRAPBOOK JOURNAL SHELL --- */
 .journal-wrapper {
   width: 100%;
   max-width: 920px;
-  height: 85vh;
+  height: 84vh;
   background: var(--parchment);
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(96, 0, 24, 0.3);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 4px solid var(--parchment-dark);
+  border: 3px solid var(--parchment-dark);
 }
 
 /* BINDING */
 .journal-binding {
   position: absolute;
-  left: 8px;
-  top: 25px;
-  bottom: 25px;
+  left: 6px;
+  top: 20px;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -181,8 +186,8 @@ body {
 }
 
 .spine-hinge {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: linear-gradient(135deg, #444, #111);
   box-shadow: inset 2px 2px 4px rgba(0,0,0,0.9), 2px 2px 5px rgba(0,0,0,0.4);
@@ -190,9 +195,10 @@ body {
 
 .wax-seal {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  z-index: 5;
 }
 
 /* VIEWPORT & SCROLLING CONFIGURATION */
@@ -201,13 +207,14 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
+  height: 100%;
 }
 
 .page {
   display: none;
   width: 100%;
   height: 100%;
-  padding: 30px 25px 20px 45px;
+  padding: 25px 20px 20px 32px;
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
@@ -221,12 +228,13 @@ body {
 /* PAGE SPECIFIC SCROLLING CONFIGURATION */
 .scrollable-page {
   overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   max-height: 100%;
 }
 
 /* CUSTOM GOTHIC SCROLLBAR */
 .scrollable-page::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .scrollable-page::-webkit-scrollbar-track {
@@ -250,82 +258,39 @@ body {
 
 /* ================= BACKGROUND IMAGES FOR ALL 10 PAGES ================= */
 
-/* Page 1: Welcome */
-#page-1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('pfp.jpg');
-}
-
-/* Page 2: Gaming Life */
-#page-2 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('poppy.jpg');
-  color: var(--text-light);
-}
-
-/* Page 3: Creations & Lab */
-#page-3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('Train.gif');
-  color: var(--text-light);
-}
-
-/* Page 4: Birthdays */
-#page-4 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('discordbanner.gif');
-  color: var(--text-light);
-}
-
-/* Page 5: All About ETK */
-#page-5 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('Best\ flowers.gif');
-}
-
-/* Page 6: Passions & Likes */
-#page-6 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('Sakura.gif');
-  color: var(--text-light);
-}
-
-/* Page 7: What I Hate */
-#page-7 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('flowers.jpg');
-  color: var(--text-light);
-}
-
-/* Page 8: Dream Gallery */
-#page-8 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('aurua.gif');
-  color: var(--text-light);
-}
-
-/* Page 9: Shadow Facts */
-#page-9 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('Blue\ flowers.gif');
-}
-
-/* Page 10: Future Vision */
-#page-10 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('Calm\ Night\ Moon.gif');
-  color: var(--text-light);
-}
+#page-1 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('pfp.jpg'); }
+#page-2 { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('poppy.jpg'); color: var(--text-light); }
+#page-3 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('Train.gif'); color: var(--text-light); }
+#page-4 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('discordbanner.gif'); color: var(--text-light); }
+#page-5 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('Best\ flowers.gif'); }
+#page-6 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('Sakura.gif'); color: var(--text-light); }
+#page-7 { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('flowers.jpg'); color: var(--text-light); }
+#page-8 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('aurua.gif'); color: var(--text-light); }
+#page-9 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('Blue\ flowers.gif'); }
+#page-10 { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('Calm\ Night\ Moon.gif'); color: var(--text-light); }
 
 /* TYPOGRAPHY */
 h1, h2 { 
   font-family: 'Cinzel Decorative', 'Cinzel', serif; 
   font-weight: 700;
-  letter-spacing: 2px; 
+  letter-spacing: 1.5px; 
   text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
+
+h1 { font-size: 1.3rem; }
+h2 { font-size: 1.15rem; }
 
 h3 {
   font-family: 'Cinzel', serif;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 1.1rem;
+  letter-spacing: 1px;
+  font-size: 1rem;
   margin-bottom: 6px;
 }
 
 p, li {
   font-family: 'Playfair Display', serif;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
@@ -342,7 +307,7 @@ b, strong {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #1a0f12;
   margin-top: 6px;
 }
@@ -350,9 +315,9 @@ b, strong {
 .gothic-subtitle {
   font-family: 'Cinzel', serif;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 1.15rem;
-  margin-bottom: 10px;
+  letter-spacing: 1px;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
   border-bottom: 1px solid rgba(197, 160, 89, 0.4);
   padding-bottom: 4px;
 }
@@ -361,12 +326,13 @@ b, strong {
 .banner-title {
   display: inline-block;
   color: var(--text-light);
-  padding: 6px 18px;
+  padding: 6px 14px;
   border-radius: 4px;
   box-shadow: 3px 5px 12px rgba(0,0,0,0.3);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   transform: rotate(-1deg);
   border-left: 4px solid var(--gold-accent);
+  max-width: 100%;
 }
 
 .midnight-bg { background-color: var(--navy-blue); }
@@ -375,22 +341,26 @@ b, strong {
 /* POLAROID FRAME & LACE TAPE */
 .polaroid-wrapper {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .polaroid-frame {
   background: #fcf8f2;
-  padding: 10px 10px 16px 10px;
+  padding: 8px 8px 14px 8px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
   border-radius: 2px;
   text-align: center;
+  max-width: 100%;
 }
 
 .polaroid-frame img {
   width: 100%;
   max-width: 250px;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
+  border-radius: 2px;
 }
 
 .crimson-glow { box-shadow: 0 0 25px rgba(144, 0, 32, 0.4); }
@@ -398,23 +368,24 @@ b, strong {
 
 .lace-tape {
   position: absolute;
-  width: 80px;
-  height: 24px;
+  width: 70px;
+  height: 20px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(2px);
   z-index: 2;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.top-tape { top: -12px; left: 35%; transform: rotate(-3deg); }
+.top-tape { top: -10px; left: 35%; transform: rotate(-3deg); }
 
 /* GOTHIC NOTES & CARDS */
 .gothic-note {
-  padding: 16px;
+  padding: 14px;
   border-radius: 8px;
   box-shadow: 4px 6px 18px rgba(0,0,0,0.2);
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 10px;
 }
 
 .custom-bg-box {
@@ -430,9 +401,9 @@ b, strong {
 
 .pin {
   position: absolute;
-  top: -10px;
-  right: 15px;
-  font-size: 1.2rem;
+  top: -8px;
+  right: 12px;
+  font-size: 1.1rem;
 }
 
 .fact-list {
@@ -442,6 +413,7 @@ b, strong {
 
 .fact-list li {
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
 /* STATUS TAGS */
@@ -449,7 +421,7 @@ b, strong {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 10px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -460,23 +432,24 @@ b, strong {
 
 /* CARDS & BOXES */
 .card-box {
-  padding: 18px;
-  border-radius: 12px;
+  padding: 14px;
+  border-radius: 10px;
   color: var(--text-light);
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  margin-top: 10px;
 }
 
 .navy-box { background-color: var(--navy-blue); }
 
 /* STAT BARS */
-.stat-bar-container { margin-top: 12px; }
+.stat-bar-container { margin-top: 10px; }
 .stat-label { 
   font-family: 'Cinzel', serif;
-  font-size: 0.8rem; 
+  font-size: 0.78rem; 
   font-weight: 700;
   letter-spacing: 1px;
 }
-.stat-bar { background: rgba(0,0,0,0.4); height: 10px; border-radius: 6px; overflow: hidden; margin-top: 4px; }
+.stat-bar { background: rgba(0,0,0,0.4); height: 8px; border-radius: 6px; overflow: hidden; margin-top: 4px; }
 .stat-fill { height: 100%; border-radius: 6px; }
 .crimson-fill { background: var(--crimson-glow); }
 
@@ -500,64 +473,53 @@ b, strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 22px 18px;
+  gap: 16px;
   flex-wrap: wrap;
-  padding: 10px 10px 25px 10px;
+  padding: 5px 0 20px 0;
 }
 
-/* Transition for smooth hover animation */
 .dream-gallery-grid .polaroid-wrapper {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
+  width: auto;
 }
 
-/* Larger mini-frame card */
 .mini-frame {
-  width: 170px;
-  padding: 10px 10px 16px 10px;
+  width: 150px;
+  padding: 8px 8px 12px 8px;
   background: #fdfaf5;
   border-radius: 3px;
   border: 1px solid rgba(197, 160, 89, 0.3);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 
-              0 0 15px rgba(144, 0, 32, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 
+              0 0 12px rgba(144, 0, 32, 0.25);
   text-align: center;
 }
 
-/* Substantially larger inner photo styling */
 .mini-frame img {
   width: 100% !important;
   max-width: 100% !important;
-  height: 155px !important;
+  height: 130px !important;
   object-fit: cover;
   border-radius: 2px;
-  filter: saturate(1.1) contrast(1.05);
 }
 
 .mini-frame .caption-text {
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  margin-top: 8px;
+  margin-top: 6px;
   color: #1a0f12;
-  font-family: 'Playfair Display', serif;
 }
 
-/* Scrapbook tilt angles for realistic placement */
-.dream-gallery-grid .polaroid-wrapper:nth-child(1) { transform: rotate(-4deg); }
-.dream-gallery-grid .polaroid-wrapper:nth-child(2) { transform: rotate(3deg) translateY(-4px); }
+.dream-gallery-grid .polaroid-wrapper:nth-child(1) { transform: rotate(-3deg); }
+.dream-gallery-grid .polaroid-wrapper:nth-child(2) { transform: rotate(3deg); }
 .dream-gallery-grid .polaroid-wrapper:nth-child(3) { transform: rotate(-2deg); }
-.dream-gallery-grid .polaroid-wrapper:nth-child(4) { transform: rotate(4deg) translateY(4px); }
+.dream-gallery-grid .polaroid-wrapper:nth-child(4) { transform: rotate(2deg); }
 .dream-gallery-grid .polaroid-wrapper:nth-child(5) { transform: rotate(-3deg); }
+.dream-gallery-grid .polaroid-wrapper:nth-child(6) { transform: rotate(3deg); }
 
-/* Interactive Hover state */
 .dream-gallery-grid .polaroid-wrapper:hover {
-  transform: scale(1.12) rotate(0deg) translateY(-8px) !important;
+  transform: scale(1.08) rotate(0deg) translateY(-5px) !important;
   z-index: 10;
-}
-
-.dream-gallery-grid .polaroid-wrapper:hover .mini-frame {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 
-              0 0 25px rgba(197, 160, 89, 0.6);
-  border-color: var(--gold-accent);
 }
 
 /* BUTTONS */
@@ -565,12 +527,12 @@ b, strong {
   background: var(--navy-blue);
   color: var(--text-light);
   border: 1px solid var(--gold-accent);
-  padding: 8px 20px;
-  border-radius: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
   font-family: 'Cinzel', serif;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -589,22 +551,23 @@ b, strong {
   background: linear-gradient(135deg, var(--dark-red), var(--navy-blue));
   box-shadow: 0 0 20px rgba(144, 0, 32, 0.5);
   margin-top: 10px;
+  width: 100%;
 }
 
 /* ROTATIONS & ANIMATIONS */
-.rotate-left { transform: rotate(-1.5deg); }
-.rotate-right { transform: rotate(1.5deg); }
+.rotate-left { transform: rotate(-1deg); }
+.rotate-right { transform: rotate(1deg); }
 
 .float-animation { animation: floatSlow 5s infinite alternate ease-in-out; }
 @keyframes floatSlow {
-  0% { transform: translateY(0) rotate(-2deg); }
-  100% { transform: translateY(-8px) rotate(1deg); }
+  0% { transform: translateY(0) rotate(-1deg); }
+  100% { transform: translateY(-5px) rotate(1deg); }
 }
 
 /* FOOTER NAV */
 .nav-controls {
-  padding: 12px 25px;
-  background: rgba(0,0,0,0.06);
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -613,10 +576,10 @@ b, strong {
   z-index: 20;
 }
 
-.dots-indicator { display: flex; gap: 6px; }
+.dots-indicator { display: flex; gap: 5px; }
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #aaa;
   cursor: pointer;
@@ -625,16 +588,96 @@ b, strong {
 
 .dot.active {
   background: var(--dark-red);
-  width: 22px;
+  width: 18px;
   border-radius: 10px;
 }
 
-/* MOBILE RESPONSIVE ADJUSTMENTS */
+/* ================= PERFECT MOBILE ADAPTATION ================= */
 @media (max-width: 768px) {
-  body { padding: 5px; }
-  .journal-wrapper { height: 90vh; }
-  .grid-layout, .sticky-grid { grid-template-columns: 1fr; }
-  .page { padding: 20px 15px 15px 35px; }
-  .polaroid-frame img { max-width: 100%; height: 180px; }
-  .app-header { padding: 0 5px; }
+  body {
+    padding: 6px 4px;
+  }
+
+  .app-header {
+    margin-bottom: 6px;
+  }
+
+  .logo-badge {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .music-btn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .page-counter {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .journal-wrapper {
+    height: 86vh;
+    border-radius: 12px;
+    border-width: 2px;
+  }
+
+  .journal-binding {
+    left: 4px;
+  }
+
+  .spine-hinge {
+    width: 12px;
+    height: 12px;
+  }
+
+  .page {
+    padding: 18px 12px 18px 24px;
+  }
+
+  h1 { font-size: 1.1rem; }
+  h2 { font-size: 1rem; }
+
+  /* Stack layout elements cleanly in single column */
+  .grid-layout, .sticky-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .polaroid-frame img {
+    max-width: 100%;
+    height: 150px;
+  }
+
+  .info-block {
+    width: 100%;
+  }
+
+  .mini-frame {
+    width: 135px;
+    padding: 6px 6px 10px 6px;
+  }
+
+  .mini-frame img {
+    height: 115px !important;
+  }
+
+  .dream-gallery-grid {
+    gap: 12px 10px;
+  }
+
+  /* Reset transformations on small screens so text doesn't clash */
+  .rotate-left, .rotate-right {
+    transform: none !important;
+  }
+
+  .nav-controls {
+    padding: 8px 12px;
+  }
+
+  .gothic-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
 }
