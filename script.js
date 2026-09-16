@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('nextBtn');
   const pageCounter = document.getElementById('pageCounter');
   const dotsContainer = document.getElementById('dotsContainer');
+  const particlesContainer = document.getElementById('nature-particles-container');
+  const popupContainer = document.getElementById('popup-container');
+  const lightningFlash = document.getElementById('lightning-flash');
+
+  let stormInterval = null;
 
   // --- 1. RENDER NAV DOTS ---
   function renderDots() {
@@ -22,7 +27,111 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 2. UPDATE PAGE DISPLAY ---
+  // --- 2. DYNAMIC NATURE PARTICLES ENGINE ---
+  function spawnNatureEffect(type) {
+    particlesContainer.innerHTML = '';
+    if (stormInterval) clearInterval(stormInterval);
+
+    const particleCount = type === 'fog' ? 6 : 25;
+
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle', `particle-${type}`);
+
+      // Random position & animation delay
+      p.style.left = `${Math.random() * 100}vw`;
+      p.style.animationDelay = `${Math.random() * 6}s`;
+      p.style.animationDuration = `${4 + Math.random() * 6}s`;
+
+      // Specific sizes per nature effect
+      if (type === 'petals' || type === 'sakura' || type === 'flowers') {
+        const size = 10 + Math.random() * 12;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+      } else if (type === 'snow') {
+        const size = 4 + Math.random() * 6;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+      } else if (type === 'cyber') {
+        p.style.width = '6px';
+        p.style.height = '6px';
+      } else if (type === 'fog') {
+        const size = 180 + Math.random() * 120;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.top = `${Math.random() * 80}vh`;
+      } else if (type === 'stars') {
+        const size = 12 + Math.random() * 10;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.top = `${Math.random() * 90}vh`;
+      } else if (type === 'blueglow' || type === 'aurora') {
+        const size = 8 + Math.random() * 14;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+      }
+
+      particlesContainer.appendChild(p);
+    }
+
+    // Trigger Lightning effect if Page 7 (Storm)
+    if (type === 'storm') {
+      stormInterval = setInterval(() => {
+        if (Math.random() > 0.4) {
+          lightningFlash.classList.add('flash');
+          setTimeout(() => lightningFlash.classList.remove('flash'), 80);
+        }
+      }, 3500);
+    }
+  }
+
+  // --- 3. RANDOM GOTHIC POPUPS ENGINE ---
+  const popupQuotes = [
+    { icon: '🖤', text: 'EYA: "Quiet nights are for silent creation."' },
+    { icon: '🌹', text: 'LittleSoul: "Dark romance & late-night code."' },
+    { icon: '🎧', text: 'Now Playing: Calming Night Symphony...' },
+    { icon: '🌙', text: 'Peak Hours Active: 1:00 AM - 5:00 AM' },
+    { icon: '📌', text: 'Secret Fact: EYA loves silent loyal friends.' },
+    { icon: '✨', text: 'System: Aesthetics upgraded to 100%' }
+  ];
+
+  function spawnRandomPopup() {
+    const randomItem = popupQuotes[Math.floor(Math.random() * popupQuotes.length)];
+    const popup = document.createElement('div');
+    popup.className = 'gothic-popup';
+
+    // Spawn randomly on screen margins
+    const randomTop = 15 + Math.random() * 65;
+    const randomLeft = 10 + Math.random() * 65;
+
+    popup.style.top = `${randomTop}vh`;
+    popup.style.left = `${randomLeft}vw`;
+    popup.innerHTML = `<span>${randomItem.icon}</span> <div>${randomItem.text}</div>`;
+
+    popup.addEventListener('click', () => {
+      popup.classList.add('fade-out');
+      setTimeout(() => popup.remove(), 400);
+    });
+
+    popupContainer.appendChild(popup);
+
+    // Auto dismiss after 6s
+    setTimeout(() => {
+      if (popup.parentNode) {
+        popup.classList.add('fade-out');
+        setTimeout(() => popup.remove(), 400);
+      }
+    }, 6000);
+  }
+
+  // Spawn random popups every 15 seconds
+  setInterval(() => {
+    if (Math.random() > 0.3) {
+      spawnRandomPopup();
+    }
+  }, 15000);
+
+  // --- 4. UPDATE PAGE DISPLAY ---
   function updatePage() {
     // Hide all pages
     document.querySelectorAll('.page').forEach(page => {
@@ -33,8 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const activePage = document.getElementById(`page-${currentPage}`);
     if (activePage) {
       activePage.classList.add('active');
-      // Always scroll to top when changing page on mobile/desktop
       activePage.scrollTop = 0;
+
+      // Trigger Nature particle effect based on active page
+      const natureType = activePage.getAttribute('data-nature') || 'petals';
+      spawnNatureEffect(natureType);
     }
 
     // Update Counter & Dots
@@ -59,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 3. EVENT LISTENERS ---
+  // --- 5. EVENT LISTENERS ---
   prevBtn.addEventListener('click', () => {
     if (currentPage > 1) {
       currentPage--;
@@ -82,7 +194,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 4. MUSIC CONTROLLER ---
+  // Interactive Wax Seal Popup Trigger
+  document.querySelectorAll('.interactive-seal').forEach(seal => {
+    seal.addEventListener('click', () => {
+      spawnRandomPopup();
+    });
+  });
+
+  // --- 6. MUSIC CONTROLLER ---
   let isPlaying = false;
 
   musicToggle.addEventListener('click', () => {
@@ -98,6 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
       isPlaying = false;
       musicText.textContent = 'Play Music';
     }
+  });
+
+  // Reset scroll state on orientation change
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      const activePage = document.getElementById(`page-${currentPage}`);
+      if (activePage) activePage.scrollTop = 0;
+    }, 100);
   });
 
   // Initialize view

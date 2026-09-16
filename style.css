@@ -17,21 +17,24 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background-color: #04070d;
   color: var(--text-dark);
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: 1.6;
   letter-spacing: 0.3px;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 8px;
 }
 
 /* --- AMBIENT DARK GLOW BACKGROUND --- */
@@ -84,23 +87,48 @@ body {
   100% { transform: translate(50px, 70px) scale(1.15); }
 }
 
-/* --- FALLING PETALS --- */
-#petals-container {
+/* LIGHTNING EFFECT FOR PAGE 7 */
+.lightning-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.05s ease-out;
+}
+
+.lightning-overlay.flash {
+  opacity: 1;
+}
+
+/* DYNAMIC NATURE PARTICLES CONTAINER */
+#nature-particles-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.petal {
+.particle {
   position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Rose Petals */
+.particle-petal {
   background: radial-gradient(circle, var(--crimson-glow), var(--dark-red));
   border-radius: 15px 0 15px 0;
   opacity: 0.7;
-  animation: fallPetal 9s infinite linear;
+  animation: fallPetal 8s infinite linear;
 }
 
 @keyframes fallPetal {
@@ -109,15 +137,154 @@ body {
   100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
 }
 
+/* Sakura Petals */
+.particle-sakura {
+  background: radial-gradient(circle, #ffb3c1, #ff4d6d);
+  border-radius: 12px 2px 12px 2px;
+  opacity: 0.75;
+  animation: fallSakura 7s infinite ease-in-out;
+}
+
+@keyframes fallSakura {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  50% { transform: translateY(50vh) translateX(30px) rotate(180deg); opacity: 0.9; }
+  100% { transform: translateY(105vh) translateX(-20px) rotate(360deg); opacity: 0; }
+}
+
+/* Snow Particles */
+.particle-snow {
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
+  animation: fallSnow 6s infinite linear;
+}
+
+@keyframes fallSnow {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: translateY(105vh) translateX(15px); opacity: 0.2; }
+}
+
+/* Cyber Neon Pixels */
+.particle-cyber {
+  background: #00f0ff;
+  box-shadow: 0 0 10px #00f0ff;
+  border-radius: 2px;
+  animation: floatCyber 5s infinite ease-in-out;
+}
+
+@keyframes floatCyber {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* Fog Effect */
+.particle-fog {
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: driftFog 12s infinite linear;
+}
+
+@keyframes driftFog {
+  0% { transform: translateX(-20vw) translateY(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateX(120vw) translateY(-30px); opacity: 0; }
+}
+
+/* Stars & Sparkles */
+.particle-star {
+  background: #ffd700;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: twinkle 3s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+  0% { transform: scale(0.4) rotate(0deg); opacity: 0.2; }
+  100% { transform: scale(1.1) rotate(45deg); opacity: 1; }
+}
+
+/* Blue Glow Orbs */
+.particle-blueglow {
+  background: radial-gradient(circle, #00b4d8, #0077b6);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00b4d8;
+  animation: floatBlue 7s infinite ease-in-out;
+}
+
+@keyframes floatBlue {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Aurora Dust */
+.particle-aurora {
+  background: radial-gradient(circle, #7209b7, #4cc9f0);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: floatAurora 9s infinite ease-in-out;
+}
+
+@keyframes floatAurora {
+  0% { transform: translate(0, 100vh); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translate(40px, -10vh); opacity: 0; }
+}
+
+/* FLOATING POPUP STICKERS */
+#popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.gothic-popup {
+  position: absolute;
+  background: rgba(11, 19, 37, 0.92);
+  border: 1px solid var(--gold-accent);
+  color: var(--text-light);
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px var(--crimson-glow);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: popupSpawn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 260px;
+}
+
+@keyframes popupSpawn {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.gothic-popup.fade-out {
+  animation: popupFade 0.4s forwards ease-in;
+}
+
+@keyframes popupFade {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.5); opacity: 0; }
+}
+
 /* --- HEADER --- */
 .app-header {
   width: 100%;
-  max-width: 920px;
+  max-width: 960px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 0 5px;
+  padding: 4px 6px;
   flex-shrink: 0;
 }
 
@@ -160,8 +327,9 @@ body {
 /* --- MAIN SCRAPBOOK JOURNAL SHELL --- */
 .journal-wrapper {
   width: 100%;
-  max-width: 920px;
-  height: 84vh;
+  max-width: 960px;
+  flex: 1 1 auto;
+  min-height: 0;
   background: var(--parchment);
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(96, 0, 24, 0.3);
@@ -170,6 +338,7 @@ body {
   display: flex;
   flex-direction: column;
   border: 3px solid var(--parchment-dark);
+  margin: 4px 0;
 }
 
 /* BINDING */
@@ -199,22 +368,32 @@ body {
   right: 15px;
   font-size: 1.8rem;
   z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.interactive-seal {
+  cursor: pointer;
+}
+
+.interactive-seal:hover {
+  transform: scale(1.2) rotate(15deg);
 }
 
 /* VIEWPORT & SCROLLING CONFIGURATION */
 .journal-viewport {
-  flex-grow: 1;
+  flex: 1 1 auto;
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
+  min-height: 0;
 }
 
 .page {
   display: none;
   width: 100%;
   height: 100%;
-  padding: 25px 20px 20px 32px;
+  padding: 24px 20px 20px 32px;
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
@@ -225,14 +404,12 @@ body {
   display: block;
 }
 
-/* PAGE SPECIFIC SCROLLING CONFIGURATION */
 .scrollable-page {
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
   max-height: 100%;
 }
 
-/* CUSTOM GOTHIC SCROLLBAR */
 .scrollable-page::-webkit-scrollbar {
   width: 6px;
 }
@@ -256,8 +433,7 @@ body {
   width: 100%;
 }
 
-/* ================= BACKGROUND IMAGES FOR ALL 10 PAGES ================= */
-
+/* BACKGROUND IMAGES FOR ALL 10 PAGES */
 #page-1 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('pfp.jpg'); }
 #page-2 { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('poppy.jpg'); color: var(--text-light); }
 #page-3 { background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('Train.gif'); color: var(--text-light); }
@@ -344,6 +520,11 @@ b, strong {
   display: flex;
   justify-content: center;
   width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.polaroid-wrapper:hover {
+  transform: scale(1.03) rotate(1deg);
 }
 
 .polaroid-frame {
@@ -386,6 +567,12 @@ b, strong {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.08);
   margin-bottom: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gothic-note:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .custom-bg-box {
@@ -467,8 +654,7 @@ b, strong {
   gap: 12px;
 }
 
-/* ================= PAGE 8: STYLIZED DREAM GALLERY ================= */
-
+/* DREAM GALLERY */
 .dream-gallery-grid {
   display: flex;
   justify-content: center;
@@ -566,7 +752,7 @@ b, strong {
 
 /* FOOTER NAV */
 .nav-controls {
-  padding: 10px 16px;
+  padding: 8px 16px;
   background: rgba(0,0,0,0.08);
   display: flex;
   justify-content: space-between;
@@ -592,92 +778,151 @@ b, strong {
   border-radius: 10px;
 }
 
-/* ================= PERFECT MOBILE ADAPTATION ================= */
-@media (max-width: 768px) {
-  body {
-    padding: 6px 4px;
-  }
-
-  .app-header {
-    margin-bottom: 6px;
-  }
-
-  .logo-badge {
-    font-size: 0.7rem;
-    padding: 5px 10px;
-  }
-
-  .music-btn {
-    padding: 5px 10px;
-    font-size: 0.72rem;
-  }
-
-  .page-counter {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-  }
-
-  .journal-wrapper {
-    height: 86vh;
-    border-radius: 12px;
-    border-width: 2px;
-  }
-
-  .journal-binding {
-    left: 4px;
-  }
-
-  .spine-hinge {
-    width: 12px;
-    height: 12px;
-  }
-
-  .page {
-    padding: 18px 12px 18px 24px;
-  }
+/* ================= PORTRAIT MOBILE ADAPTATION ================= */
+@media (max-width: 768px) and (orientation: portrait) {
+  body { padding: 4px; }
+  
+  .app-header { margin-bottom: 4px; }
+  .logo-badge { font-size: 0.7rem; padding: 4px 10px; }
+  .music-btn { padding: 4px 10px; font-size: 0.7rem; }
+  .page-counter { padding: 4px 10px; font-size: 0.75rem; }
+  .journal-wrapper { border-radius: 12px; border-width: 2px; }
+  .page { padding: 18px 12px 18px 24px; }
 
   h1 { font-size: 1.1rem; }
   h2 { font-size: 1rem; }
 
-  /* Stack layout elements cleanly in single column */
   .grid-layout, .sticky-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .polaroid-frame img {
-    max-width: 100%;
-    height: 150px;
+  .polaroid-frame img { max-width: 100%; height: 140px; }
+  .mini-frame { width: 135px; padding: 6px 6px 10px 6px; }
+  .mini-frame img { height: 110px !important; }
+
+  .rotate-left, .rotate-right { transform: none !important; }
+}
+
+/* ================= LANDSCAPE MOBILE ADAPTATION (ROTATED PHONE) ================= */
+@media (max-height: 550px) and (orientation: landscape) {
+  body {
+    padding: 2px 6px;
   }
 
-  .info-block {
-    width: 100%;
+  .app-header {
+    padding: 2px 4px;
+    margin-bottom: 2px;
+  }
+
+  .logo-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  .music-btn, .page-counter {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+
+  .journal-wrapper {
+    border-radius: 10px;
+    margin: 2px 0;
+  }
+
+  .journal-binding {
+    top: 10px;
+    bottom: 10px;
+    left: 4px;
+  }
+
+  .spine-hinge {
+    width: 10px;
+    height: 10px;
+  }
+
+  .page {
+    padding: 12px 14px 12px 22px;
+  }
+
+  h1 { font-size: 0.95rem; }
+  h2 { font-size: 0.9rem; }
+  h3 { font-size: 0.85rem; margin-bottom: 4px; }
+  p, li { font-size: 0.8rem; line-height: 1.4; }
+
+  .banner-title {
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
+
+  .wax-seal {
+    font-size: 1.2rem;
+    top: 5px;
+    right: 10px;
+  }
+
+  .grid-layout {
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .sticky-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .polaroid-frame {
+    padding: 5px 5px 8px 5px;
+  }
+
+  .polaroid-frame img {
+    max-width: 100%;
+    height: 100px;
+  }
+
+  .caption-text {
+    font-size: 0.7rem;
+    margin-top: 3px;
+  }
+
+  .gothic-note, .card-box {
+    padding: 8px 10px;
+    margin-bottom: 6px;
   }
 
   .mini-frame {
-    width: 135px;
-    padding: 6px 6px 10px 6px;
+    width: 110px;
+    padding: 4px 4px 8px 4px;
   }
 
   .mini-frame img {
-    height: 115px !important;
+    height: 85px !important;
   }
 
   .dream-gallery-grid {
-    gap: 12px 10px;
-  }
-
-  /* Reset transformations on small screens so text doesn't clash */
-  .rotate-left, .rotate-right {
-    transform: none !important;
+    gap: 8px;
   }
 
   .nav-controls {
-    padding: 8px 12px;
+    padding: 4px 12px;
   }
 
   .gothic-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .dot.active {
+    width: 12px;
+  }
+
+  .rotate-left, .rotate-right {
+    transform: none !important;
   }
 }
