@@ -87,12 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 3. RANDOM GOTHIC POPUPS ENGINE ---
   const popupQuotes = [
-    { icon: '🖤', text: 'EYA: "Quiet nights are for silent creation."' },
-    { icon: '🌹', text: 'LittleSoul: "Dark romance & late-night code."' },
-    { icon: '🎧', text: 'Now Playing: Calming Night Symphony...' },
-    { icon: '🌙', text: 'Peak Hours Active: 1:00 AM - 5:00 AM' },
-    { icon: '📌', text: 'Secret Fact: EYA loves silent loyal friends.' },
-    { icon: '✨', text: 'System: Aesthetics upgraded to 100%' }
+    { icon: '🐈', text: 'SECRET: "LOVES HELLO KITTY.."' },
+    { icon: '🌹', text: 'HAIRTYPE: "WAVY WITH CURLY! ."' },
+    { icon: '😳', text: 'FACT: I get blush easily...' },
+    { icon: '🌙', text: 'WANTED TO SAY: Loves your eyes and ur face more than the moon and stars' },
+    { icon: '📌', text: 'Secret Fact: EYA loves praying for his fav friends more than himself!.' },
+    { icon: '✨', text: 'Dark secret Code: L0V3' }
   ];
 
   function spawnRandomPopup() {
